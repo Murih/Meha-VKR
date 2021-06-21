@@ -1,0 +1,5 @@
+Привет, <%= @user.name %>,
+
+Добро пожаловать на Меху! Перейди по ссылке ниже, чтобы активировать свой аккаунт:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

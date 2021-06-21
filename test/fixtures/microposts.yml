@@ -1,0 +1,46 @@
+cats:
+  content: "Ура, коты!"
+  created_at: <%= 10.minutes.ago %>
+  user: katty
+
+subscribe:
+  content: "Подпишись на меня на ютуб: youtube.com"
+  created_at: <%= 3.years.ago %>
+  user: katty
+
+cat_video:
+  content: "Счастливые коты счастливы: https://www.youtube.com/watch?v=PCG1vIqgo3Y"
+  created_at: <%= 2.hours.ago %>
+  user: katty
+
+most_recent:
+  content: "Новый пост"
+  created_at: <%= Time.zone.now %>
+  user: katty
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: katty
+<% end %>
+
+dogs:
+  content: "Арчи лучший пес!"
+  created_at: <%= 2.years.ago %>
+  user: archer
+
+contents:
+  content: "Что-то!"
+  created_at: <%= 3.days.ago %>
+  user: archer
+
+banana:
+  content: "Lana Banana"
+  created_at: <%= 10.minutes.ago %>
+  user: lana
+
+keyword:
+  content: "5635W1654q+`*/- DASFGDFHGJH1."
+  created_at: <%= 4.hours.ago %>
+  user: lana

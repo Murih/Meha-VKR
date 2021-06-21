@@ -1,0 +1,45 @@
+katty:
+  name: Katty Example
+  email: katty@sfedu.ru
+  password_digest: <%= User.digest('password') %>
+  admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+inactive:
+  name: Inactive User
+  email: inactive@sfedu.ru
+  password_digest: <%= User.digest('password') %>
+  admin: false
+  activated: false
+
+archer:
+  name: Dog Archer
+  email: dog@sfedu.ru
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+lana:
+  name: Lana Banana
+  email: banana@sfedu.ru
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+malory:
+  name: Malory Cat
+  email: catass@sfedu.ru
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@sfedu.ru" %>
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+<% end %>
+

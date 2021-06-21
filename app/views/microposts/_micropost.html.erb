@@ -1,0 +1,51 @@
+<li id="micropost-<%= micropost.id %>">
+  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <span class="content">
+    <%= micropost.content %>
+    <%= image_tag micropost.picture.url if micropost.picture? %>
+  </span>
+  <span class="timestamp">
+    Опубликовано <%= time_ago_in_words(micropost.created_at) %> назад.
+    <% if current_user?(micropost.user) %>
+      <%= link_to "удалить", micropost, method: :delete,
+                                       data: { confirm: "Вы уверены?" } %>
+    <% end %>
+    <%= render "likes/like", micropost: micropost %>
+  </span>
+  <a onclick="toggle(<%=micropost.id%>)">
+    <h5>(<span><%= micropost.comments.count %></span>) Комментарии</h5>
+  </a>
+  <div>
+          <% if micropost.comments.any? %>
+            <% micropost.comments.each do |comment| %>
+              <div class="comment d-flex" style="padding-left:3%;">
+                <div class="">
+                  <%=link_to gravatar_for(comment.user, size: 50), comment.user %>
+                </div>
+                <div class="">
+                   <%= link_to comment.user.name, comment.user %>
+                  <span class="timestamp">
+                   <%= time_ago_in_words(comment.created_at) %> назад.
+                </span>
+                  <p><%= comment.content %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+    <div class="togglecomment" id="commentbody-<%= micropost.id %>" style="display: none;">
+      <%= render 'comments/form', resource: micropost %>
+    </div>
+  </div>
+</li>
+<script>
+    function toggle(id="") {
+        let x = document.getElementById("commentbody-" + id);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
